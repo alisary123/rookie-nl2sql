@@ -1,111 +1,100 @@
----
-layout: home
+# NL2SQL 学习项目
 
-hero:
-  name: "NL2SQL LangGraph"
-  text: "实战课程"
-  tagline: 从零构建生产级自然语言转SQL系统
-  actions:
-    - theme: brand
-      text: 开始学习
-      link: /guide/introduction
-    - theme: alt
-      text: 查看模块
-      link: /modules/
-    - theme: alt
-      text: GitHub
-      link: https://github.com/yourusername/rookie-nl2sql
+从零开始学习自然语言转 SQL (NL2SQL) 的实践项目。
 
-features:
-  - icon: 🎯
-    title: 系统化课程设计
-    details: 13个渐进式模块，从脚手架到生产部署，涵盖NL2SQL系统的完整生命周期
+## 项目概述
 
-  - icon: 🚀
-    title: 实战导向
-    details: 每个模块都有独立分支、验收标准和实践任务，边学边做
+本项目采用模块化学习方式，从基础框架开始，逐步构建完整的 NL2SQL 系统：
 
-  - icon: 🌏
-    title: 国内友好
-    details: 支持DeepSeek和通义千问，无需科学上网，价格低廉
-
-  - icon: 🔧
-    title: LangGraph驱动
-    details: 使用LangGraph构建可控、可追踪的AI Agent系统
-
-  - icon: 📊
-    title: 完整技术栈
-    details: 提示词工程、Function Call、RAG、SQL校验、安全沙箱等核心技术
-
-  - icon: 🎓
-    title: 生产级质量
-    details: 包含评测框架、可观测性、部署方案等企业级实践
-
----
-
-## 课程模块
-
-### 基础篇 (M0-M3)
-- **M0 项目脚手架**: 构建最小可运行LangGraph系统
-- **M1 提示词工程**: 使用Prompt实现NL2SQL
-- **M2 Function Call**: 通过工具调用执行数据库操作
-- **M3 Schema感知**: 让模型理解数据库结构
-
-### 增强篇 (M4-M6)
-- **M4 SQL校验**: 结构化校验与自我修复
-- **M5 执行沙箱**: 数据库安全与风险控制
-- **M6 RAG增强**: 行业黑话识别与历史SQL复用
-
-### 进阶篇 (M7-M9)
-- **M7 多轮对话**: 意图澄清与上下文管理
-- **M8 多表联结**: 复杂SQL生成与Few-shot学习
-- **M9 答案生成**: SQL结果转自然语言回答
-
-### 工程篇 (M10-M13)
-- **M10 系统评测**: 标准化测试与性能优化
-- **M11 可观测性**: 日志、追踪与调试
-- **M12 API & UI**: Web服务与交互界面
-- **M13 部署上线**: Docker容器化与配置管理
+- **M0**: 项目脚手架与基线
+- **M1**: 提示工程实现 NL2SQL
+- **M2**: Function Call 实现数据库查询
 
 ## 快速开始
 
+### 1. 环境准备
+
+详细的环境配置说明请查看 [环境准备指南](guide/setup.md)。
+
+### 2. M0 验收测试
+
 ```bash
 # 克隆项目
-git clone https://github.com/yourusername/rookie-nl2sql.git
+git clone https://github.com/alisary123/rookie-nl2sql.git
 cd rookie-nl2sql
 
-# 安装依赖
-python -m venv venv
+# 切换到 M0 分支
+git checkout 00-scaffold
+
+# 创建虚拟环境并安装依赖
+python3 -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 
-# 配置环境
-cp .env.example .env
-# 编辑.env，填入DeepSeek或Qwen API Key
-
-# 运行M0测试
+# 运行验收测试
 python tests/test_m0_acceptance.py
 ```
 
-## 适合人群
+### 3. 验收标准
 
-- 想要了解NL2SQL系统构建的开发者
-- 希望实践LangGraph的AI应用开发者
-- 需要将LLM集成到数据查询场景的工程师
-- 对Agent系统设计感兴趣的学习者
+M0 验收测试应该全部通过：
+- ✓ 基础State结构正常
+- ✓ LangGraph图结构运行正常
+- ✓ 意图解析功能正常
 
-## 前置知识
+## 项目结构
 
-- Python基础
-- 基本SQL语法
-- LLM基础概念（了解即可）
-- Git基础操作
+```
+rookie-nl2sql/
+├── configs/          # 配置文件
+├── graphs/           # 图结构和状态定义
+├── tests/            # 测试文件
+├── docs/             # 文档
+├── requirements.txt  # Python 依赖
+├── .env.example      # 环境变量模板
+└── README.md         # 项目说明
+```
 
-## 技术特色
+## 学习路径
 
-- ✅ 支持国内LLM (DeepSeek/Qwen)
-- ✅ 完整的分支式教学
-- ✅ 每个模块独立可运行
-- ✅ 标准化验收测试
-- ✅ 生产级代码质量
-- ✅ 详细的文档和注释
+### M0: 项目脚手架 (当前)
+
+目标：建立基础框架和测试环境。
+
+**验收标准**：
+- 基础 State 结构
+- LangGraph 工作流
+- 意图解析节点
+
+### M1: 提示工程
+
+目标：使用提示工程实现自然语言转 SQL。
+
+**主要内容**：
+- LLM 客户端集成
+- 提示词模板设计
+- SQL 生成节点
+
+### M2: 数据库集成
+
+目标：实现真实的数据库查询功能。
+
+**主要内容**：
+- Function Call 集成
+- 数据库工具
+- SQL 执行节点
+
+## 技术栈
+
+- **Python**: 主要编程语言
+- **LangGraph**: 工作流编排
+- **LangChain**: LLM 集成框架
+- **SQLite**: 示例数据库
+
+## 贡献指南
+
+欢迎提交 Issue 和 Pull Request！
+
+## 许可证
+
+MIT License
